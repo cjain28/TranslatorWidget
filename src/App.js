@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Accordion from './Components/Accordion';
 import Dropdown from './Components/Dropdown';
+import Header from './Components/Header';
+import Route from './Components/Route';
 import Search from './Components/Search';
 import Translate from './Components/Translate';
 
@@ -43,16 +45,23 @@ const App = () => {
     return (
         <div>
             {/* <button onClick={() => setShowDropdown(!showDropdown)}>Toggle Dropdown</button> */}
-            {/* <Accordion items={items} /> */}
-            {/* <Search /> */}
-            {/* {showDropdown ?
+            <Header />
+            <Route path='/'>
+                <Accordion items={items} />
+            </Route>
+            <Route path='/search'>
+                <Search />
+            </Route>
+            <Route path='/dropdown'>
                 <Dropdown
+                    label="Select a color"
                     Selected={Selected}
                     onSelectedChange={setSelected}
                     options={options} />
-                : null
-            } */}
-            <Translate />
+            </Route>
+            <Route path='/translate'>
+                <Translate />
+            </Route>
         </div>
     );
 };
